@@ -1,0 +1,38 @@
+export default [
+	{
+		id: 1,
+		name: 'Github.com',
+		url: '',
+		category: '',
+		userName: '',
+		password: '',
+		comments: '',
+	},
+	{
+		id: 2,
+		name: 'Gmail.com',
+		url: '',
+		category: '',
+		userName: '',
+		password: '',
+		comments: '',
+	},
+	{
+		id: 3,
+		name: 'Udemy',
+		url: '',
+		category: '',
+		userName: '',
+		password: '',
+		comments: '',
+	},
+	{
+		id: 4,
+		name: 'MakeTechEasier',
+		url: '',
+		category: '',
+		userName: '',
+		password: '',
+		comments: '',
+	},
+];

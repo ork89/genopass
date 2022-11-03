@@ -1,0 +1,61 @@
+#root {  
+  margin: 0 2rem;
+  padding: 0 2rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav--logo {
+  height: 4em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.nav--logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.nav--logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.nav--menu {
+  width: 400px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;  
+}
+
+.nav--menu > li {
+  border-bottom: 2px solid transparent;
+}
+
+.nav--menu > li:hover {
+  border-bottom: 2px solid #61dafbaa;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+nav > span {
+  padding: 10px;
+  cursor: pointer;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .nav--logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
