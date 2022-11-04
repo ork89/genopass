@@ -9,13 +9,17 @@ const Data = props => {
 		setShowPass(() => !showPass);
 	};
 
+	const openMenu = () => {
+		console.log('menu');
+	};
+
 	return (
 		<div className='data--item'>
 			<span style={{ width: '100%', textIndent: '15px' }}>{props.name}</span>
 			<span>
 				<i onClick={() => props.remove(props.id)} className='fa-solid fa-trash fa-sm'></i>
 			</span>
-			<span>
+			{/* <span>
 				<i className='fa-solid fa-pen fa-sm'></i>
 			</span>
 			<span onClick={toggleShowPass}>
@@ -24,6 +28,9 @@ const Data = props => {
 				) : (
 					<i className='fa-solid fa-eye-slash fa-sm'></i>
 				)}
+			</span> */}
+			<span onClick={openMenu}>
+				<i className='fa-solid fa-ellipsis-vertical'></i>
 			</span>
 		</div>
 	);

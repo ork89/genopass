@@ -50,7 +50,10 @@ const DataView = () => {
 					<button type='submit'>Search</button>
 				</form>
 				<button>
-					<i className='fa-solid fa-filter'></i>
+					<i className='fa-solid fa-filter fa-lg'></i>
+				</button>
+				<button>
+					<i className='fa-solid fa-square-plus fa-lg'></i>
 				</button>
 			</div>
 			{passList}
