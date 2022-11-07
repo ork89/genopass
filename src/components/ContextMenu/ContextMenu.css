@@ -1,0 +1,26 @@
+.context {    
+    position: absolute;
+    background-color: #f8f8f8;
+    color: rgb(100, 100, 100);
+    border-radius: 10px;
+    box-shadow: 1px 2px 6px #c9c9c99f;
+    transition: opacity 0.5s linear;
+}
+
+.context-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.context-menu > li {
+    padding: 3px 15px;
+    cursor: pointer;
+}
+
+.context-menu > li:hover {
+    background-color: #c9c9c950;
+}
+
+.context-menu > li:not(:last-child) {
+    border-bottom: 1px solid #b1b1b170;
+}
