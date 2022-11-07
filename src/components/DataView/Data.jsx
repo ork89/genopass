@@ -5,18 +5,21 @@ import ContextMenu from '../ContextMenu/ContextMenu';
 import './Data.css';
 
 const Data = props => {
-	const [showPass, setShowPass] = useState(false);	
+	const [showPass, setShowPass] = useState(false);
 	const [showContextMenu, setShowContextMenu] = useState(false);
-	const [positions, setPositions] = useState({ x: 0, y: 0 });	
+	const [positions, setPositions] = useState({ x: 0, y: 0 });
 
 	useEffect(() => {
-		const handleOverlayClick = () => setShowContextMenu(false);
 		window.addEventListener('click', handleOverlayClick);
+		window.addEventListener('contextmenu', openContextMenu);
 
 		return () => {
 			window.removeEventListener('click', handleOverlayClick);
+			window.removeEventListener('contextmenu', handleOverlayClick);
 		};
 	}, []);
+
+	const handleOverlayClick = () => setShowContextMenu(false);
 
 	const toggleShowPass = () => {
 		setShowPass(() => !showPass);
@@ -42,7 +45,7 @@ const Data = props => {
 					id={props.id}
 				/>
 			)}
-			
+
 			<div className='data--item' onContextMenu={e => openContextMenu(e)}>
 				<span style={{ width: '100%', textIndent: '15px' }}>{props.name}</span>
 				<span>
@@ -54,9 +57,6 @@ const Data = props => {
 					) : (
 						<i className='fa-solid fa-eye-slash fa-sm'></i>
 					)}
-				</span>
-				<span onClick={e => openContextMenu(e)}>
-					<i className='fa-solid fa-ellipsis-vertical'></i>
 				</span>
 			</div>
 		</>
