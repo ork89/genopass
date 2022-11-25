@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import reactLogo from '../assets/react.svg';
 
@@ -8,10 +9,15 @@ const Navbar = () => {
 			<img src={reactLogo} className='nav--logo' alt='react logo' />
 			<h2>Generator Of Passwords</h2>
 			<ul className='nav--menu'>
-				<li>Vault</li>
-				<li>About</li>
-				<li>Support</li>
-				<li>Contact</li>
+				<li>
+					<Link to='/'>Vault</Link>
+				</li>
+				<li>
+					<Link to='About'>About</Link>
+				</li>
+				<li>
+					<Link to='Contact'>Contact</Link>
+				</li>
 			</ul>
 			<span>
 				<i className='fa-brands fa-sistrix fa-lg'></i>

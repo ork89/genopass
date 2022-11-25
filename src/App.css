@@ -1,6 +1,6 @@
 #root {  
   margin: 0 2rem;
-  padding: 0 2rem;
+  padding: 0 5rem;
 }
 
 nav {
@@ -26,7 +26,7 @@ nav {
   margin: 0 auto;
   list-style: none;
   display: flex;
-  justify-content: space-around;  
+  justify-content: space-evenly;  
 }
 
 .nav--menu > li {
@@ -66,4 +66,9 @@ nav > span {
   right: 0;
   bottom: 0;
   background-color: rgba(22, 22, 22, 0.342);
+}
+
+.contact--form {
+  display: flex;
+  flex-direction: column;
 }
