@@ -8,7 +8,6 @@ const Navbar = () => {
 			<img src={reactLogo} className='nav--logo' alt='react logo' />
 			<h2>Generator Of Passwords</h2>
 			<ul className='nav--menu'>
-				<li>Home</li>
 				<li>Vault</li>
 				<li>About</li>
 				<li>Support</li>
