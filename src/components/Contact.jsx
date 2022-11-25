@@ -33,7 +33,7 @@ export const Contact = () => {
 				frameborder='0'
 				style={{ border: 0 }}
 				referrerpolicy='no-referrer-when-downgrade'
-				src='https://www.google.com/maps/embed/v1/place?key=AIzaSyA8uEaS8IFHeTatyYsYXqPW6YqokZqcGaI&q=Bareket+Petach+Tikva'
+				src='https://www.google.com/maps/embed/v1/place?key=MY_API_KEY&q=SOME_ADDRESS'
 				allowfullscreen
 			></iframe>
 			<form className='contact--form'>
