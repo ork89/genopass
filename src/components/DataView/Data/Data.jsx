@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import ContextMenu from '../ContextMenu/ContextMenu';
+import ContextMenu from '../../ContextMenu/ContextMenu';
 
 import './Data.css';
 
@@ -10,12 +10,12 @@ const Data = props => {
 	const [positions, setPositions] = useState({ x: 0, y: 0 });
 
 	useEffect(() => {
-		window.addEventListener('click', handleOverlayClick);
-		window.addEventListener('contextmenu', openContextMenu);
+		document.addEventListener('click', handleOverlayClick);
+		// document.addEventListener('contextmenu', openContextMenu);
 
 		return () => {
-			window.removeEventListener('click', handleOverlayClick);
-			window.removeEventListener('contextmenu', handleOverlayClick);
+			document.removeEventListener('click', handleOverlayClick);
+			// document.removeEventListener('contextmenu', openContextMenu);
 		};
 	}, []);
 

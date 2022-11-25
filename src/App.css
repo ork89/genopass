@@ -47,3 +47,23 @@ nav > span {
 .fa-solid:hover {
   color: #00d8ff;
 }
+
+.modal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(22, 22, 22, 0.342);
+}

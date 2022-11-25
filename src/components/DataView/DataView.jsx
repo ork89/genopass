@@ -1,9 +1,9 @@
-import { nanoid } from 'nanoid';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Data from './Data/Data';
 import ReactModal from 'react-modal';
-import testData from '../../testData';
-import Data from './Data';
+import { nanoid } from 'nanoid';
+import { PasswordGenerator } from '../PasswordGenerator/PasswordGenerator';
+import './DataView.css';
 
 ReactModal.setAppElement('#root');
 
@@ -67,6 +67,15 @@ const DataView = () => {
 		});
 	};
 
+	const handleCopyPassword = pwdString => {
+		setNewPassword(prevPass => {
+			return {
+				...prevPass,
+				password: pwdString,
+			};
+		});
+	};
+
 	const handleSubmit = e => {
 		e.preventDefault();
 
@@ -81,7 +90,7 @@ const DataView = () => {
 			return newList;
 		});
 
-		// after setting up the DB this will save the new password to that DB
+		// after setting up the DB this will save the new password in the DB
 		// for now I'll just use localStorage
 		localStorage.setItem('pwdList', JSON.stringify(passwordList));
 		closeModal();
@@ -106,7 +115,7 @@ const DataView = () => {
 		);
 
 	return (
-		<div id='view--container'>
+		<div className='view--container' id='viewContainer'>
 			<ReactModal
 				isOpen={isShowModal}
 				onRequestClose={closeModal}
@@ -114,6 +123,7 @@ const DataView = () => {
 				overlayClassName='overlay'
 			>
 				<div className='modal--add-password'>
+					<h3>Add new password</h3>
 					<form>
 						<input
 							type='text'
@@ -140,15 +150,19 @@ const DataView = () => {
 							onChange={handleChange}
 							value={newPassword.userName}
 						/>
-						<input
-							type='password'
-							name='password'
-							id='password'
-							autoComplete='new-password'
-							placeholder='Password'
-							onChange={handleChange}
-							value={newPassword.password}
-						/>
+						<span>
+							<input
+								type='password'
+								name='password'
+								id='password'
+								autoComplete='new-password'
+								placeholder='Password'
+								onChange={handleChange}
+								value={newPassword.password}
+							/>
+							<PasswordGenerator handleCopyPassword={handleCopyPassword} />
+						</span>
+
 						<input
 							type='text'
 							name='category'
@@ -165,7 +179,6 @@ const DataView = () => {
 							onChange={handleChange}
 							value={newPassword.comments}
 						/>
-						<hr />
 						<br />
 						<button onClick={handleSubmit} className='modal--submitBtn'>
 							Save
@@ -185,9 +198,6 @@ const DataView = () => {
 					/>
 					<button type='submit'>Search</button>
 				</form>
-				<button>
-					<i className='fa-solid fa-filter fa-lg'></i>
-				</button>
 				<button onClick={openModal}>
 					<i className='fa-solid fa-square-plus fa-lg'></i>
 				</button>

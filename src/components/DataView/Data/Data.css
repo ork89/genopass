@@ -1,0 +1,26 @@
+.data--item {
+    width: 450px;
+    height: 45px;
+    padding: 5px;
+    border: 1px solid rgb(194 194 194 / 50%);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    /* box-shadow: 1px 1px 5px 0px rgb(194 194 194 / 50%); */
+    box-shadow: 0px 1px 4px #c9c9c99f;
+    display: flex;
+    align-items: center;
+}
+
+.data--item > span {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.data--item > span > i:hover {
+    color: #61dafbaa;
+}
+
+
+.fa-ellipsis-vertical {
+  padding: 10px;
+}
