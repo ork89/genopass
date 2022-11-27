@@ -13,7 +13,8 @@ const DataView = () => {
 	);
 	const [filter, setFilter] = useState('');
 	const [isShowModal, setShowModal] = useState(false);
-	const [newPassword, setNewPassword] = useState({
+	const [isInEditMode, setIsInEditMode] = useState(false);
+	const [passwordItem, setPasswordItem] = useState({
 		id: nanoid(),
 		name: '',
 		url: '',
@@ -41,13 +42,24 @@ const DataView = () => {
 		});
 	};
 
+	const editPasswordItem = id => {
+		setIsInEditMode(true);
+
+		const passwordFound = passwordList.filter(i => i.id === id);
+		setPasswordItem(prevItem => passwordFound[0]);
+
+		openModal();
+	};
+
 	const openModal = () => {
 		setShowModal(true);
 	};
 
 	const closeModal = () => {
+		setIsInEditMode(false);
 		setShowModal(false);
-		setNewPassword({
+
+		setPasswordItem({
 			id: nanoid(),
 			name: '',
 			url: '',
@@ -59,7 +71,7 @@ const DataView = () => {
 	};
 
 	const handleChange = event => {
-		setNewPassword(prevFormData => {
+		setPasswordItem(prevFormData => {
 			return {
 				...prevFormData,
 				[event.target.name]: event.target.value,
@@ -68,7 +80,7 @@ const DataView = () => {
 	};
 
 	const handleCopyPassword = pwdString => {
-		setNewPassword(prevPass => {
+		setPasswordItem(prevPass => {
 			return {
 				...prevPass,
 				password: pwdString,
@@ -76,12 +88,24 @@ const DataView = () => {
 		});
 	};
 
+	// Until the DB is up and running, the passwords list is saved in localStorage
+	// useEffect is set to run 'localStorage.setItem()' on every change in 'PasswordList'
 	const handleSubmit = e => {
 		e.preventDefault();
 
+		if (isInEditMode) {
+			setPasswordList(prevList => {
+				return prevList.map(item => {
+					return item.id === passwordItem.id ? passwordItem : item;
+				});
+			});
+
+			return;
+		}
+
 		setPasswordList(prevList => {
 			const newList = [];
-			newList.push(newPassword);
+			newList.push(passwordItem);
 
 			for (let index = 0; index < prevList.length; index++) {
 				newList.push(prevList[index]);
@@ -90,9 +114,6 @@ const DataView = () => {
 			return newList;
 		});
 
-		// after setting up the DB this will save the new password in the DB
-		// for now I'll just use localStorage
-		localStorage.setItem('pwdList', JSON.stringify(passwordList));
 		closeModal();
 	};
 
@@ -107,6 +128,7 @@ const DataView = () => {
 							id={passwordItem.id}
 							name={passwordItem.name}
 							remove={removePasswordItem}
+							edit={editPasswordItem}
 						/>
 					);
 				})
@@ -123,7 +145,11 @@ const DataView = () => {
 				overlayClassName='overlay'
 			>
 				<div className='modal--add-password'>
-					<h3>Add new password</h3>
+					{isInEditMode ? (
+						<h3>Edit '{passwordItem.name}' Password</h3>
+					) : (
+						<h3>New Password</h3>
+					)}
 					<form>
 						<input
 							type='text'
@@ -131,7 +157,7 @@ const DataView = () => {
 							id='passwordName'
 							placeholder='Name'
 							onChange={handleChange}
-							value={newPassword.name}
+							value={passwordItem.name}
 						/>
 						<input
 							type='text'
@@ -139,7 +165,7 @@ const DataView = () => {
 							id='passwordUrl'
 							placeholder='Url'
 							onChange={handleChange}
-							value={newPassword.passwordUrl}
+							value={passwordItem.url}
 						/>
 						<input
 							type='text'
@@ -148,7 +174,7 @@ const DataView = () => {
 							autoComplete='username'
 							placeholder='User Name / Email'
 							onChange={handleChange}
-							value={newPassword.userName}
+							value={passwordItem.userName}
 						/>
 						<span>
 							<input
@@ -158,7 +184,7 @@ const DataView = () => {
 								autoComplete='new-password'
 								placeholder='Password'
 								onChange={handleChange}
-								value={newPassword.password}
+								value={passwordItem.password}
 							/>
 							<PasswordGenerator handleCopyPassword={handleCopyPassword} />
 						</span>
@@ -169,7 +195,7 @@ const DataView = () => {
 							id='passwordCategory'
 							placeholder='Category'
 							onChange={handleChange}
-							value={newPassword.category}
+							value={passwordItem.category}
 						/>
 						<input
 							type='text'
@@ -177,7 +203,7 @@ const DataView = () => {
 							id='comments'
 							placeholder='Comments'
 							onChange={handleChange}
-							value={newPassword.comments}
+							value={passwordItem.comments}
 						/>
 						<br />
 						<button onClick={handleSubmit} className='modal--submitBtn'>

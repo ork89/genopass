@@ -72,3 +72,13 @@ nav > span {
   display: flex;
   flex-direction: column;
 }
+
+.contact--form > input, textarea {
+  margin: 15px 0;
+}
+
+.contact--submitBtn {
+  width: 80px;
+  background-color: #FFF;
+  margin: 0 auto;
+}

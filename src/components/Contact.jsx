@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import envelope from '../assets/envelope.svg';
 
 export const Contact = () => {
 	const [userDetails, setUserDetails] = useState({
@@ -30,15 +31,27 @@ export const Contact = () => {
 			<iframe
 				width='100%'
 				height='250'
-				frameborder='0'
+				frameBorder='0'
 				style={{ border: 0 }}
-				referrerpolicy='no-referrer-when-downgrade'
+				referrerPolicy='no-referrer-when-downgrade'
 				src='https://www.google.com/maps/embed/v1/place?key=AIzaSyA8uEaS8IFHeTatyYsYXqPW6YqokZqcGaI&q=Bareket+Petach+Tikva'
-				allowfullscreen
+				allowFullScreen
 			></iframe>
 			<form className='contact--form'>
-				<input type='text' name='userName' id='userName' onChange={handleChange} />
-				<input type='text' name='email' id='email' onChange={handleChange} />
+				<input
+					type='text'
+					placeholder='Your Name'
+					name='userName'
+					id='userName'
+					onChange={handleChange}
+				/>
+				<input
+					type='text'
+					placeholder='Email Address'
+					name='email'
+					id='email'
+					onChange={handleChange}
+				/>
 				<textarea
 					name='content'
 					id='content'
@@ -46,7 +59,9 @@ export const Contact = () => {
 					rows='10'
 					onChange={handleChange}
 				></textarea>
-				<button onClick={handleSubmit}>Send</button>
+				<button onClick={handleSubmit} className='contact--submitBtn'>
+					<img src={envelope} alt='send email envelope' />
+				</button>
 			</form>
 		</>
 	);

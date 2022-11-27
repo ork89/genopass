@@ -48,7 +48,7 @@ const Data = props => {
 
 			<div className='data--item' onContextMenu={e => openContextMenu(e)}>
 				<span style={{ width: '100%', textIndent: '15px' }}>{props.name}</span>
-				<span>
+				<span onClick={() => props.edit(props.id)}>
 					<i className='fa-solid fa-pen fa-sm'></i>
 				</span>
 				<span onClick={toggleShowPass}>
