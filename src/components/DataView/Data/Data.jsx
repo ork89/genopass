@@ -40,6 +40,7 @@ const Data = props => {
 			{showContextMenu && (
 				<ContextMenu
 					delete={props.remove}
+					edit={props.edit}
 					positionX={positions.x}
 					positionY={positions.y}
 					id={props.id}

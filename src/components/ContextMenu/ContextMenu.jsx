@@ -10,7 +10,7 @@ const ContextMenu = props => {
 	return (
 		<div className='context' style={positions}>
 			<ul className='context-menu'>
-				<li>Edit</li>
+				<li onClick={() => props.edit(props.id)}>Edit</li>
 				<li onClick={() => props.delete(props.id)}>Delete</li>
 				<li>Show Password</li>
 			</ul>
