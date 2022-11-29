@@ -8,14 +8,16 @@ const {
 	deletePassword,
 } = require('../controllers/vaultController.cjs');
 
-router.get('/', getPasswords);
+const { protect } = require('../middleware/authMiddleware.cjs');
 
-router.get('/:id', getPassword);
+router.get('/', protect, getPasswords);
 
-router.post('/', setPassword);
+router.get('/:id', protect, getPassword);
 
-router.put('/:id', updatePassword);
+router.post('/', protect, setPassword);
 
-router.delete('/:id', deletePassword);
+router.put('/:id', protect, updatePassword);
+
+router.delete('/:id', protect, deletePassword);
 
 module.exports = router;

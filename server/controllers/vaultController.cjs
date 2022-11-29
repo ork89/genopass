@@ -1,11 +1,12 @@
 const asyncHandler = require('express-async-handler');
 const Vault = require('../models/vaultModel.cjs');
+const User = require('../models/userModel.cjs');
 
 // @desc    Get all passwords
 // @route   GET /api/vault
 // @access  Private
 const getPasswords = asyncHandler(async (req, res) => {
-	const passwords = await Vault.find();
+	const passwords = await Vault.find({ user: req.user.id });
 	res.status(200).json(passwords);
 });
 
@@ -35,6 +36,7 @@ const setPassword = asyncHandler(async (req, res) => {
 
 	const password = await Vault.create({
 		text: req.body.text,
+		user: req.user.id,
 	});
 	res.status(200).json(password);
 });
@@ -48,7 +50,20 @@ const updatePassword = asyncHandler(async (req, res) => {
 
 	if (!password) {
 		res.status(400);
-		throw new Error(`Password with ID: ${id} does not exist`);
+		throw new Error(`Password with ID: ${id} not found`);
+	}
+
+	// Get logged user
+	const user = await User.findById(req.user.id);
+	if (!user) {
+		res.status(401);
+		throw new Error(`User with ID: ${id} not found`);
+	}
+
+	// Make sure that the password belongs to the logged user
+	if (password.user.toString() !== user.id) {
+		res.status(401);
+		throw new Error('User not authorized');
 	}
 
 	const updatedPwd = await Vault.findByIdAndUpdate(id, req.body, { new: true });
@@ -66,6 +81,19 @@ const deletePassword = asyncHandler(async (req, res) => {
 	if (!password) {
 		res.status(400);
 		throw new Error(`Password with ID: ${pwdId} does not exist`);
+	}
+
+	// Get logged user
+	const user = await User.findById(req.user.id);
+	if (!user) {
+		res.status(401);
+		throw new Error(`User with ID: ${id} not found`);
+	}
+
+	// Make sure that the password belongs to the logged user
+	if (password.user.toString() !== user.id) {
+		res.status(401);
+		throw new Error('User not authorized');
 	}
 
 	// const passwordToDelete = await Vault.findByIdAndDelete(id);
