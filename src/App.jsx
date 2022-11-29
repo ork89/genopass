@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar';
 import DataView from './components/DataView/DataView';
-import { About } from './components/About';
+import { About } from './components/About/About';
 import { Contact } from './components/Contact';
 
 import './App.css';

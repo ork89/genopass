@@ -1,0 +1,13 @@
+.about {
+    padding: 0 5rem;
+}
+
+.about--testimonials {
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: auto;
+    align-content: center   
+}
