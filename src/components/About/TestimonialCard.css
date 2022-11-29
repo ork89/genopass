@@ -13,10 +13,10 @@
     font-weight: 600;
     text-align: center;
     color: #FFFFFF;
-    background: #5FBAEF;
-    background: -webkit-linear-gradient(top left, #5FBAEF, #084CB8);
+    background: #17C3B2;
+    /* background: -webkit-linear-gradient(top left, #5FBAEF, #084CB8);
     background: -moz-linear-gradient(top left, #5FBAEF, #084CB8);
-    background: linear-gradient(to bottom right, #5FBAEF, #084CB8);
+    background: linear-gradient(to bottom right, #5FBAEF, #084CB8); */
     margin: 0;
     padding-top: 22px;
     border-top-left-radius: 10px;

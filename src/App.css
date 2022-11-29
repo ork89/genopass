@@ -1,8 +1,3 @@
-#root {  
-  margin: 0 2rem;
-  padding: 0 5rem;
-}
-
 nav {
   display: flex;
   flex-direction: row;
@@ -34,7 +29,7 @@ nav {
 }
 
 .nav--menu > li:hover {
-  border-bottom: 2px solid #00d8ff;
+  border-bottom: 2px solid #17C3B2;
   font-weight: 600;
   cursor: pointer;
 }
@@ -45,7 +40,7 @@ nav > span {
 }
 
 .fa-solid:hover {
-  color: #00d8ff;
+  color: #17C3B2;
 }
 
 .modal {

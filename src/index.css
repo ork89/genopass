@@ -4,8 +4,11 @@
   line-height: 24px;
   font-weight: 400;
 
+  margin: 0 2rem;
+  padding: 0 4rem;
+
   color-scheme: light dark;
-  color: #2a445c;
+  color: #395b7b;
   background-color: #FFFFFF;
 
   font-synthesis: none;
