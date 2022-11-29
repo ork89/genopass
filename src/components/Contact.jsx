@@ -8,6 +8,8 @@ export const Contact = () => {
 		content: '',
 	});
 
+	const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API;
+
 	const handleChange = event => {
 		const { name, type, value } = event.target;
 
@@ -32,9 +34,9 @@ export const Contact = () => {
 				width='100%'
 				height='250'
 				frameBorder='0'
-				style={{ border: 0 }}
+				style={{ border: 0, paddingTop: '2rem' }}
 				referrerPolicy='no-referrer-when-downgrade'
-				src='https://www.google.com/maps/embed/v1/place?key=AIzaSyA8uEaS8IFHeTatyYsYXqPW6YqokZqcGaI&q=Bareket+Petach+Tikva'
+				src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=Bareket+Petach+Tikva`}
 				allowFullScreen
 			></iframe>
 			<form className='contact--form'>

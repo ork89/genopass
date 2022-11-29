@@ -1,24 +1,29 @@
 {
-  "name": "genopass",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "nanoid": "^4.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-modal": "^3.16.1",
-    "react-router-dom": "^6.4.3"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.1.0",
-    "vite": "^3.1.0"
-  }
+	"name": "genopass",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Store all of your passwords in one secure location or create strong and passwords with our password generator.",
+	"main": "server.cjs",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"start": "node server/server.cjs",
+		"server": "nodemon server/server.cjs"
+	},
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"nanoid": "^4.0.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-modal": "^3.16.1",
+		"react-router-dom": "^6.4.3"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.17",
+		"@types/react-dom": "^18.0.6",
+		"@vitejs/plugin-react": "^2.1.0",
+		"vite": "^3.1.0"
+	}
 }
