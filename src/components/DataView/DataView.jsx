@@ -180,7 +180,7 @@ const DataView = () => {
 							<input
 								type='password'
 								name='password'
-								id='password'
+								id='userPassword'
 								autoComplete='new-password'
 								placeholder='Password'
 								onChange={handleChange}

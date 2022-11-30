@@ -1,3 +1,4 @@
+/* NAVBAR */
 nav {
   display: flex;
   flex-direction: row;
@@ -38,11 +39,9 @@ nav > span {
   padding: 10px;
   cursor: pointer;
 }
+/* NAVBAR */
 
-.fa-solid:hover {
-  color: #17C3B2;
-}
-
+/* MODAL */
 .modal {
   position: absolute;
   top: 40%;
@@ -62,7 +61,52 @@ nav > span {
   bottom: 0;
   background-color: rgba(22, 22, 22, 0.342);
 }
+/* MODAL */
 
+/* REGISTER */
+.container .heading{
+  text-align: center;
+
+}
+
+.container {
+  height: 100vh;
+}
+
+.container .form {  
+  margin-top: 30px;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container form > .form-group input[type=text] {
+  margin-top: 10px;
+  width: 230px;
+}
+
+.registerBtn, .loginBtn {
+  width: 250px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.registerBtn:focus,
+.registerBtn:hover,
+.loginBtn:focus,
+.loginBtn:hover {
+  border: 2px solid #17C3B2;
+  color:rgb(150, 150, 150);
+}
+
+/* REGISTER */
+
+/* CONTACT */
 .contact--form {
   display: flex;
   flex-direction: column;
@@ -76,4 +120,10 @@ nav > span {
   width: 80px;
   background-color: #FFF;
   margin: 0 auto;
+}
+/* CONTACT */
+
+
+.fa-solid:hover {
+  color: #17C3B2;
 }
