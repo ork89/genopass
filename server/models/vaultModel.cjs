@@ -7,9 +7,26 @@ const vaultSchema = mongoose.Schema(
 			required: true,
 			ref: 'User',
 		},
-		text: {
+		name: {
 			type: String,
-			required: [true, 'Please add a text value'],
+			required: [true, 'Name is required'],
+		},
+		url: {
+			type: String,
+		},
+		userName: {
+			type: String,
+			required: [true, 'User name is required'],
+		},
+		password: {
+			type: String,
+			required: [true, 'Password is required'],
+		},
+		category: {
+			type: String,
+		},
+		comments: {
+			type: String,
 		},
 	},
 	{

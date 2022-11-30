@@ -29,16 +29,24 @@ const getPassword = asyncHandler(async (req, res) => {
 // @route   POST /api/vault
 // @access  Private
 const setPassword = asyncHandler(async (req, res) => {
-	if (!req.body.text) {
+	const { name, password, userName, url, category, comments } = req.body;
+
+	if (!name || !password || !userName) {
 		res.status(400);
-		throw new Error('Please use a text field');
+		throw new Error('Not all required fields are filled');
 	}
 
-	const password = await Vault.create({
-		text: req.body.text,
+	const newPassword = await Vault.create({
 		user: req.user.id,
+		name: name,
+		url: url,
+		userName: userName,
+		password: password,
+		category: category,
+		comments: comments,
 	});
-	res.status(200).json(password);
+
+	res.status(200).json(newPassword);
 });
 
 // @desc    Update password
