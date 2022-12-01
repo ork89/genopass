@@ -8,7 +8,6 @@ const User = require('../models/userModel.cjs');
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
 	const { name, email, password } = req.body;
-
 	// verify request integrity
 	if (!name || !email || !password) {
 		res.status(400);
@@ -27,7 +26,7 @@ const registerUser = asyncHandler(async (req, res) => {
 	const salt = await bcrypt.genSalt(10);
 	const hashedPwd = await bcrypt.hash(password, salt);
 
-	// Register user
+	// Create user
 	const newUser = await User.create({
 		name,
 		email,
