@@ -8,7 +8,8 @@ export const Contact = () => {
 		content: '',
 	});
 
-	const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API;
+	const apiKey = import.meta.env.GOOGLE_MAPS_API;
+	console.log(import.meta);
 
 	const handleChange = event => {
 		const { name, type, value } = event.target;

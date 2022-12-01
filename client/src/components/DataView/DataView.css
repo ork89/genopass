@@ -88,7 +88,7 @@ form > button {
     border: none;
 }
 
-button[type="submit"] {
+.view--search button[type="submit"] {
     text-indent: -999px;
     overflow: hidden;
     width: 40px;
@@ -99,7 +99,7 @@ button[type="submit"] {
     opacity: 0.5;    
 }
 
-button[type="submit"]:hover {
+.view--search button[type="submit"]:hover {
     opacity: 1;
     border: none;    
 }

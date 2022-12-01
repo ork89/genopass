@@ -83,7 +83,7 @@ nav > span {
   align-items: center;
 }
 
-.container form > .form-group input[type=text] {
+.container form > .form-group input[type=text], .form-group input[type=password] {
   margin-top: 10px;
   width: 230px;
 }

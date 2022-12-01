@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Navbar from './components/Navbar';
@@ -16,10 +17,10 @@ function App() {
 			<Navbar />
 			<Routes>
 				<Route path='/' element={<DataView />} />
-				<Route path='login' element={<Login />} />
-				<Route path='register' element={<Register />} />
-				<Route path='about' element={<About />} />
-				<Route path='contact' element={<Contact />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/register' element={<Register />} />
+				<Route path='/about' element={<About />} />
+				<Route path='/contact' element={<Contact />} />
 			</Routes>
 			<ToastContainer />
 		</div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register, reset } from '../features/auth/authSlice';
@@ -45,16 +45,15 @@ export const Register = () => {
 
 		if (password !== confPassword) {
 			toast.error('Passwords do not match');
-			return;
+		} else {
+			const userData = {
+				name,
+				email,
+				password,
+			};
+
+			dispatch(register(userData));
 		}
-
-		const userData = {
-			name,
-			email,
-			password,
-		};
-
-		dispatch(register(userData));
 	};
 
 	if (isLoading) return <Spinner />;
@@ -66,7 +65,7 @@ export const Register = () => {
 			</section>
 
 			<section className='form'>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div className='form-group'>
 						<input
 							type='text'
@@ -94,7 +93,7 @@ export const Register = () => {
 					<div className='form-group'>
 						<input
 							type='password'
-							className='form-control'
+							className='form-control register--password'
 							id='password'
 							name='password'
 							value={password}
@@ -106,17 +105,17 @@ export const Register = () => {
 					<div className='form-group'>
 						<input
 							type='password'
-							className='form-control'
+							className='form-control register--confPassword'
 							id='confPassword'
 							name='confPassword'
 							value={confPassword}
-							autoComplete='confirm-password'
+							autoComplete='new-password'
 							placeholder='Password confirmation'
 							onChange={onChange}
 						/>
 					</div>
 					<div className='form-group'>
-						<button className='registerBtn' onClick={handleSubmit}>
+						<button type='submit' className='registerBtn'>
 							Register
 						</button>
 					</div>

@@ -7,4 +7,9 @@ export default defineConfig({
 	define: {
 		'process.env': import.meta,
 	},
+	server: {
+		proxy: {
+			'/api/users/': 'http://localhost:5000',
+		},
+	},
 });
