@@ -62,14 +62,13 @@ const updatePassword = asyncHandler(async (req, res) => {
 	}
 
 	// Get logged user
-	const user = await User.findById(req.user.id);
-	if (!user) {
+	if (!req.user) {
 		res.status(401);
 		throw new Error(`User with ID: ${id} not found`);
 	}
 
 	// Make sure that the password belongs to the logged user
-	if (password.user.toString() !== user.id) {
+	if (password.user.toString() !== req.user.id) {
 		res.status(401);
 		throw new Error('User not authorized');
 	}
@@ -92,14 +91,13 @@ const deletePassword = asyncHandler(async (req, res) => {
 	}
 
 	// Get logged user
-	const user = await User.findById(req.user.id);
-	if (!user) {
+	if (!req.user) {
 		res.status(401);
 		throw new Error(`User with ID: ${id} not found`);
 	}
 
 	// Make sure that the password belongs to the logged user
-	if (password.user.toString() !== user.id) {
+	if (password.user.toString() !== req.user.id) {
 		res.status(401);
 		throw new Error('User not authorized');
 	}

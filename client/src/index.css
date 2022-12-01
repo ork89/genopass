@@ -43,3 +43,7 @@ h1 {
 input::placeholder {
   color: #bbb;
 }
+
+ul {
+  list-style: none;
+}

@@ -225,7 +225,7 @@ const DataView = () => {
 					<button type='submit'>Search</button>
 				</form>
 				<button onClick={openModal}>
-					<i className='fa-solid fa-square-plus fa-lg'></i>
+					<i className='fa-solid fa-square-plus fa-xl'></i>
 				</button>
 			</div>
 			{passList}
