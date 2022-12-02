@@ -10,6 +10,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/api/users/': 'http://localhost:5000',
+			'/api/vault/': 'http://localhost:5000',
 		},
 	},
 });

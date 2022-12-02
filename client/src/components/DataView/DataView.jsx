@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+	createPassword,
+	getPasswords,
+	deletePassword,
+	updatePassword,
+	reset,
+} from '../../features/vault/vaultSlice';
 import Data from './Data/Data';
+import Spinner from '../Spinner';
 import ReactModal from 'react-modal';
 import { nanoid } from 'nanoid';
 import { PasswordGenerator } from '../PasswordGenerator/PasswordGenerator';
@@ -8,9 +18,6 @@ import './DataView.css';
 ReactModal.setAppElement('#root');
 
 const DataView = () => {
-	const [passwordList, setPasswordList] = useState(
-		JSON.parse(localStorage.getItem('pwdList')) || []
-	);
 	const [filter, setFilter] = useState('');
 	const [isShowModal, setShowModal] = useState(false);
 	const [isInEditMode, setIsInEditMode] = useState(false);
@@ -24,29 +31,32 @@ const DataView = () => {
 		comments: '',
 	});
 
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { user } = useSelector(state => state.auth);
+	const { vault, isLoading, isError, message } = useSelector(state => state.vault);
+
 	useEffect(() => {
-		localStorage.setItem('pwdList', JSON.stringify(passwordList));
-	}, [passwordList]);
+		if (isError) {
+			console.log(message);
+		}
 
-	// While there's still no DB only removing the password from memory and localStorage
-	const removePasswordItem = id => {
-		setPasswordList(prevList => {
-			let newPassArray = [];
-			prevList.map(pass => {
-				if (pass.id !== id) {
-					newPassArray.push(pass);
-				}
-			});
+		if (!user) {
+			navigate('/login');
+		}
 
-			return newPassArray;
-		});
-	};
+		dispatch(getPasswords());
+
+		return () => {
+			dispatch(reset());
+		};
+	}, [user, navigate, isError, message, dispatch]);
 
 	const editPasswordItem = id => {
 		setIsInEditMode(true);
 
-		const passwordFound = passwordList.filter(i => i.id === id);
-		setPasswordItem(prevItem => passwordFound[0]);
+		const passwordFound = vault.filter(i => i._id === id);
+		if (passwordFound) setPasswordItem(prevItem => passwordFound[0]);
 
 		openModal();
 	};
@@ -88,46 +98,29 @@ const DataView = () => {
 		});
 	};
 
-	// Until the DB is up and running, the passwords list is saved in localStorage
-	// useEffect is set to run 'localStorage.setItem()' on every change in 'PasswordList'
 	const handleSubmit = e => {
 		e.preventDefault();
 
 		if (isInEditMode) {
-			setPasswordList(prevList => {
-				return prevList.map(item => {
-					return item.id === passwordItem.id ? passwordItem : item;
-				});
-			});
-
-			return;
+			dispatch(updatePassword(passwordItem));
+		} else {
+			dispatch(createPassword(passwordItem));
+			dispatch(reset());
 		}
-
-		setPasswordList(prevList => {
-			const newList = [];
-			newList.push(passwordItem);
-
-			for (let index = 0; index < prevList.length; index++) {
-				newList.push(prevList[index]);
-			}
-
-			return newList;
-		});
 
 		closeModal();
 	};
 
 	const passList =
-		passwordList && passwordList.length > 0 ? (
-			passwordList
+		vault && vault.length > 0 ? (
+			vault
 				.filter(item => item.name.toLowerCase().includes(filter))
 				.map(passwordItem => {
 					return (
 						<Data
-							key={passwordItem.id}
-							id={passwordItem.id}
+							key={passwordItem._id}
+							id={passwordItem._id}
 							name={passwordItem.name}
-							remove={removePasswordItem}
 							edit={editPasswordItem}
 						/>
 					);
@@ -135,6 +128,8 @@ const DataView = () => {
 		) : (
 			<h2>No Passwords Found</h2>
 		);
+
+	if (isLoading) return <Spinner />;
 
 	return (
 		<div className='view--container' id='viewContainer'>

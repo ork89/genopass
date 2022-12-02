@@ -105,7 +105,6 @@ const deletePassword = asyncHandler(async (req, res) => {
 	// const passwordToDelete = await Vault.findByIdAndDelete(id);
 	await password.remove();
 
-	// res.status(200).json(passwordToDelete);
 	res.status(200).json({ id: pwdId });
 });
 
