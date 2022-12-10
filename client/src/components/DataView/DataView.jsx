@@ -46,9 +46,6 @@ const DataView = () => {
 
 		dispatch(getPasswords());
 
-		return () => {
-			dispatch(reset());
-		};
 	}, [user, navigate, isError, message, dispatch]);
 
 	const editPasswordItem = id => {

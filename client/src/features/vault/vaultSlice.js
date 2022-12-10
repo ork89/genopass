@@ -13,7 +13,6 @@ const initialState = {
 export const createPassword = createAsyncThunk('vault/create', async (passwordData, thunkAPI) => {
 	try {
 		const token = thunkAPI.getState().auth.user.token;
-		console.log({ token });
 		return await vaultService.createPassword(passwordData, token);
 	} catch (error) {
 		const message =
