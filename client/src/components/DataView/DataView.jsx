@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
 	createPassword,
 	getPasswords,
-	deletePassword,
 	updatePassword,
 	reset,
 } from '../../features/vault/vaultSlice';

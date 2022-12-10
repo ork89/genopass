@@ -101,6 +101,13 @@ export const PasswordGenerator = props => {
 		const { name, value, type, checked } = event.target;
 
 		setModalData(prevData => {
+			if (name === 'passwordInput') {
+				return {
+					...prevData,
+					[name]: value,
+				};
+			}
+
 			const updatedValue =
 				type === 'checkbox'
 					? { use: checked, min: prevData[name].min }
@@ -115,7 +122,7 @@ export const PasswordGenerator = props => {
 	const handleSliderChange = target => {
 		const { name, value } = target;
 
-		if (name === 'passwordInput') {
+		if (name === 'pwdLengthSlider') {
 			setModalData(prevData => {
 				return {
 					...prevData,
@@ -170,7 +177,7 @@ export const PasswordGenerator = props => {
 					<span>
 						<label htmlFor='pwdLengthSlider'>Password Length</label>
 						<Slider
-							name='passwordInput'
+							name='pwdLengthSlider'
 							maxValue='24'
 							minValue='4'
 							currentValue={modalData.length}
