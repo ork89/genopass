@@ -1,4 +1,4 @@
-:root {  
+:root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -7,9 +7,14 @@
   margin: 0 2rem;
   padding: 0 4rem;
 
+  --primary-color: #395b7b;
+  --secondary-color: #00d8ff;
+  --alt-primary: #17C3B2;
+  --app-background: #FFFFFF;
+
   color-scheme: light dark;
-  color: #395b7b;
-  background-color: #FFFFFF;
+  color: var(--primary-color);
+  background-color: var(--app-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,18 +24,21 @@
 }
 
 a {
-  /* font-weight: 500;
-  color: #646cff; */
-  text-decoration: inherit;
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
 a:active {
-  color: #00d8ff;
+  color: var(--secondary-color);
+}
+
+a:visited {
+  color: var(--primary-color);
 }
 
 body {
   margin: 0;
-  /* display: flex; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -40,8 +48,21 @@ h1 {
   line-height: 1.1;
 }
 
+input {
+  background-color: var(--app-background);
+  color: var(--primary-color);
+}
+
 input::placeholder {
-  color: #bbb;
+  color: var(--primary-color);
+}
+
+textarea {
+  border: 1px solid #c2c2c280;
+  border-radius: 5px;
+  background-color: var(--app-background);
+  color: var(--primary-color);
+  padding: 10px;
 }
 
 ul {

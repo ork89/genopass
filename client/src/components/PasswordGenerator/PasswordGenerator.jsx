@@ -67,8 +67,6 @@ export const PasswordGenerator = props => {
 			}
 		});
 
-		console.warn(`Testing password: ${shuffleString(pswd)}\nPasswords length: ${pswd.length}`);
-
 		setModalData(prevData => {
 			return {
 				...prevData,

@@ -17,8 +17,7 @@
     cursor: pointer;
 }
 
-.context-menu > li:hover {
-    /* background-color: #c9c9c950; */
+.context-menu > li:hover {    
     background-color: #00d9ff94;
 }
 

@@ -8,9 +8,6 @@ export const Contact = () => {
 		content: '',
 	});
 
-	const apiKey = import.meta.env.GOOGLE_MAPS_API;
-	console.log(import.meta);
-
 	const handleChange = event => {
 		const { name, type, value } = event.target;
 
@@ -31,15 +28,6 @@ export const Contact = () => {
 
 	return (
 		<>
-			<iframe
-				width='100%'
-				height='250'
-				frameBorder='0'
-				style={{ border: 0, paddingTop: '2rem' }}
-				referrerPolicy='no-referrer-when-downgrade'
-				src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=Bareket+Petach+Tikva`}
-				allowFullScreen
-			></iframe>
 			<form className='contact--form'>
 				<input
 					type='text'
@@ -60,6 +48,7 @@ export const Contact = () => {
 					id='content'
 					cols='30'
 					rows='10'
+					placeholder='In case you have any questions or comments, we would love to hear them :)'
 					onChange={handleChange}
 				></textarea>
 				<button onClick={handleSubmit} className='contact--submitBtn'>

@@ -18,7 +18,7 @@ nav {
 }
 
 .nav--heading {
-  color: #227C9D;
+  color: var(--primary-color);
 }
 
 .nav--topLeft {
@@ -33,7 +33,7 @@ nav {
 }
 
 .nav--topLeft > li:hover {
-  border-bottom: 2px solid #17C3B2;
+  border-bottom: 2px solid var(--alt-primary);
   font-weight: 600;
   cursor: pointer;
 }
@@ -48,7 +48,7 @@ nav {
 }
 
 .nav--topRight i {
-  color:#227C9D;
+  color:var(--primary-color);
 }
 
 .nav--logoutBtn {
@@ -114,13 +114,14 @@ nav > span {
   margin-top: 10px;
   border-radius: 5px;
   cursor: pointer;
+  color: var(--primary-color);
 }
 
 .registerBtn:focus,
 .registerBtn:hover,
 .loginBtn:focus,
 .loginBtn:hover {
-  border: 2px solid #17C3B2;
+  border: 2px solid var(--alt-primary);
   color:rgb(150, 150, 150);
 }
 
@@ -138,7 +139,7 @@ nav > span {
 
 .contact--submitBtn {
   width: 80px;
-  background-color: #FFF;
+  background-color: var(--app-background);
   margin: 0 auto;
 }
 /* CONTACT */
@@ -161,13 +162,27 @@ nav > span {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #000 transparent #555 transparent;
+  border-color: var(--primary-color) transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
 
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* SPINNER */
 
+.fa-solid {
+  color: var(--primary-color)
+}
+
 .fa-solid:hover {
-  color: #17C3B2;
+  color: var(--alt-primary);
 }

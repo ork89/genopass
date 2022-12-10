@@ -19,9 +19,10 @@
     justify-content: center;
   }
 
-  .modal--add-password > form > input, .modal--add-password > form > span > input {
+  .modal--add-password > form > input,
+  .modal--add-password > form > span > input {
     border-radius: 5px;
-    border: 1px solid rgb(194 194 194 / 80%);
+    border: 1px solid #c2c2c2cc;
     padding: 10px;
     margin: 10px;
   }
@@ -30,14 +31,16 @@
     padding: 10px;
     width: 70px;
     margin: 0 auto;
-    border: 2px solid #FFF;
+    border: 2px solid var(--app-background);
     border-radius: 4px;
     cursor: pointer;
+    color:#969696;
   }
 
-  .modal--submitBtn:focus, .modal--submitBtn:hover {
-    border: 2px solid #17C3B2;
-    color:rgb(150, 150, 150);
+  .modal--submitBtn:focus,
+  .modal--submitBtn:hover {
+    border: 2px solid var(--alt-primary);
+    
   }
   
 .view--search {

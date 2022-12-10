@@ -12,8 +12,8 @@
     font-size: 20px;
     font-weight: 600;
     text-align: center;
-    color: #FFFFFF;
-    background: #17C3B2;
+    color: var(--app-background);
+    background: var(--alt-primary);
     /* background: -webkit-linear-gradient(top left, #5FBAEF, #084CB8);
     background: -moz-linear-gradient(top left, #5FBAEF, #084CB8);
     background: linear-gradient(to bottom right, #5FBAEF, #084CB8); */
