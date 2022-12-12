@@ -17,9 +17,9 @@ app.use('/api/users', require('./routes/userRoutes.cjs'));
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '../client/dist')));
 
-	app.get('*', (response, request) =>
-		response.sendFile(path.resolve(__dirname, '../', 'client', 'dist', 'index.html'))
-	);
+	app.get('*', (request, response) => {
+		response.sendFile(path.resolve(__dirname, '../', 'client', 'dist', 'index.html'));
+	});
 } else {
 	app.get('/', (request, response) => response.send('Environment is not set to production'));
 }
