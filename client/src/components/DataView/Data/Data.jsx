@@ -5,9 +5,11 @@ import ContextMenu from '../../ContextMenu/ContextMenu';
 import './Data.css';
 
 const Data = props => {
-	const [showPass, setShowPass] = useState(false);
+	const [passwordVisibility, setPasswordVisibility] = useState(false);
 	const [showContextMenu, setShowContextMenu] = useState(false);
 	const [positions, setPositions] = useState({ x: 0, y: 0 });
+
+	const { id, name, password } = props;
 
 	useEffect(() => {
 		document.addEventListener('click', handleOverlayClick);
@@ -22,7 +24,7 @@ const Data = props => {
 	const handleOverlayClick = () => setShowContextMenu(false);
 
 	const toggleShowPass = () => {
-		setShowPass(() => !showPass);
+		setPasswordVisibility(() => !passwordVisibility);
 	};
 
 	const openContextMenu = event => {
@@ -39,25 +41,39 @@ const Data = props => {
 		<>
 			{showContextMenu && (
 				<ContextMenu
+					id={id}
 					edit={props.edit}
+					show={toggleShowPass}
 					positionX={positions.x}
 					positionY={positions.y}
-					id={props.id}
 				/>
 			)}
 
 			<div className='data--item' onContextMenu={e => openContextMenu(e)}>
-				<span style={{ width: '100%', textIndent: '15px' }}>{props.name}</span>
-				<span onClick={() => props.edit(props.id)}>
-					<i className='fa-solid fa-pen fa-sm'></i>
-				</span>
-				<span onClick={toggleShowPass}>
-					{showPass ? (
-						<i className='fa-solid fa-eye fa-sm'></i>
-					) : (
-						<i className='fa-solid fa-eye-slash fa-sm'></i>
-					)}
-				</span>
+				<form className='data--item-form'>
+					<div>{name}</div>
+					<div className='data--item-password'>
+						<input
+							type={passwordVisibility ? 'text' : 'password'}
+							className='data--item-showPassword'
+							name='showPassword'
+							value={password}
+							readOnly
+						/>
+					</div>
+					<div className='data--item-buttons'>
+						<span onClick={() => props.edit(props.id)}>
+							<i className='fa-solid fa-pen fa-sm'></i>
+						</span>
+						<span onClick={toggleShowPass}>
+							{passwordVisibility ? (
+								<i className='fa-solid fa-eye fa-sm'></i>
+							) : (
+								<i className='fa-solid fa-eye-slash fa-sm'></i>
+							)}
+						</span>
+					</div>
+				</form>
 			</div>
 		</>
 	);

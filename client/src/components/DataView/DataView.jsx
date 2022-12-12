@@ -45,7 +45,6 @@ const DataView = () => {
 		}
 
 		dispatch(getPasswords());
-
 	}, [user, navigate, isError, message, dispatch]);
 
 	const editPasswordItem = id => {
@@ -117,6 +116,7 @@ const DataView = () => {
 							key={passwordItem._id}
 							id={passwordItem._id}
 							name={passwordItem.name}
+							password={passwordItem.password}
 							edit={editPasswordItem}
 						/>
 					);

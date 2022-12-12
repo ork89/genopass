@@ -16,7 +16,7 @@ const ContextMenu = props => {
 			<ul className='context-menu'>
 				<li onClick={() => props.edit(props.id)}>Edit</li>
 				<li onClick={() => dispatch(deletePassword(props.id))}>Delete</li>
-				<li>Show Password</li>
+				<li onClick={() => props.show()}>Show Password</li>
 			</ul>
 		</div>
 	);

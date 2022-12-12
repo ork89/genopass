@@ -10,8 +10,16 @@
     align-items: center;
 }
 
-.data--item > span {
-    margin-right: 8px;
+.data--item-form {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.data--item > form > span {
+    cursor: pointer;
+    margin-left: -10px;
 }
 
 .data--item > span > i:hover {
@@ -19,6 +27,25 @@
     cursor: pointer;
 }
 
+.data--item-buttons {
+    width: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.data--item-password {
+    margin-left: auto;
+}
+
+.data--item-showPassword {
+    width: 100px;
+    outline: none;
+    padding: 5px;
+}
+
+.data--item input[type=text], input[type=password]{
+    color: #b0b0b0;
+}
 
 .fa-ellipsis-vertical {
   padding: 10px;
