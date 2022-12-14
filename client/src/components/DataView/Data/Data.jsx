@@ -23,7 +23,7 @@ const Data = props => {
 
 	const handleOverlayClick = () => setShowContextMenu(false);
 
-	const toggleShowPass = () => {
+	const toggleShowPassword = () => {
 		setPasswordVisibility(() => !passwordVisibility);
 	};
 
@@ -43,7 +43,7 @@ const Data = props => {
 				<ContextMenu
 					id={id}
 					edit={props.edit}
-					show={toggleShowPass}
+					show={toggleShowPassword}
 					positionX={positions.x}
 					positionY={positions.y}
 				/>
@@ -65,11 +65,11 @@ const Data = props => {
 						<span onClick={() => props.edit(props.id)}>
 							<i className='fa-solid fa-pen fa-sm'></i>
 						</span>
-						<span onClick={toggleShowPass}>
+						<span onClick={toggleShowPassword}>
 							{passwordVisibility ? (
-								<i className='fa-solid fa-eye fa-sm'></i>
-							) : (
 								<i className='fa-solid fa-eye-slash fa-sm'></i>
+							) : (
+								<i className='fa-solid fa-eye fa-sm'></i>
 							)}
 						</span>
 					</div>

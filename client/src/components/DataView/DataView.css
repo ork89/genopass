@@ -8,6 +8,7 @@
     margin: 0 0 30px;
   }
 
+  /* ADD NEW PASSWORD MODAL */
   .modal {
     padding: 30px 50px;
     min-width: 300px;
@@ -19,12 +20,13 @@
     justify-content: center;
   }
 
-  .modal--add-password > form > input,
-  .modal--add-password > form > span > input {
+  .modal--add-password input[type='text'],
+  .modal--add-password input[type='password'] {
     border-radius: 5px;
     border: 1px solid #c2c2c2cc;
     padding: 10px;
     margin: 10px;
+    outline: none;
   }
   
   .modal--submitBtn {
@@ -39,10 +41,11 @@
 
   .modal--submitBtn:focus,
   .modal--submitBtn:hover {
-    border: 2px solid var(--alt-primary);
-    
+    border: 2px solid var(--alt-primary);    
   }
-  
+  /* ADD NEW PASSWORD MODAL */
+
+  /* SEARCH FIELD */
 .view--search {
     position: relative;
     display: flex;
@@ -59,39 +62,15 @@ input[type="search"] {
     color: inherit;
     border: 1px solid transparent;
     border-radius: inherit;
+    outline: none;
   }
   
   input[type="search"]::placeholder {
     color: #bbb;
   }
 
-
-.view--search button {
-    background-color: transparent;
+.view--search-Btn{
     color: #213547;
-    margin: 0 0 30px 10px;
-    border: none;
-}
-
-.view--search > button > i {
-    left: 0;
-    top: 8px;
-    padding: 9px 8px;
-    transition: .3s;
-    cursor: pointer;
-}
-
-.view--input {
-    margin-bottom: 10px;
-    outline: none;
-}
-
-form > button {
-    outline: none;
-    border: none;
-}
-
-.view--search button[type="submit"] {
     text-indent: -999px;
     overflow: hidden;
     width: 40px;
@@ -102,8 +81,14 @@ form > button {
     opacity: 0.5;    
 }
 
-.view--search button[type="submit"]:hover {
+.view--search-Btn:hover {
     opacity: 1;
     border: none;    
 }
-  
+/* SEARCH FIELD */
+
+.view--add-new {
+  background-color: transparent;    
+  margin: 0 0 30px 10px;
+  border: none;
+}

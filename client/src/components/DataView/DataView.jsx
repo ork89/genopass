@@ -29,6 +29,7 @@ const DataView = () => {
 		password: '',
 		comments: '',
 	});
+	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -106,6 +107,10 @@ const DataView = () => {
 		closeModal();
 	};
 
+	const toggleShowPassword = () => {
+		setIsPasswordVisible(prev => !isPasswordVisible);
+	};
+
 	const passList =
 		vault && vault.length > 0 ? (
 			vault
@@ -169,7 +174,7 @@ const DataView = () => {
 						/>
 						<span>
 							<input
-								type='password'
+								type={isPasswordVisible ? 'text' : 'password'}
 								name='password'
 								id='userPassword'
 								autoComplete='new-password'
@@ -177,6 +182,13 @@ const DataView = () => {
 								onChange={handleChange}
 								value={passwordItem.password}
 							/>
+							<button type='button' onClick={toggleShowPassword}>
+								{isPasswordVisible ? (
+									<i className='fa-solid fa-eye-slash fa-sm'></i>
+								) : (
+									<i className='fa-solid fa-eye fa-sm'></i>
+								)}
+							</button>
 							<PasswordGenerator handleCopyPassword={handleCopyPassword} />
 						</span>
 
@@ -213,9 +225,11 @@ const DataView = () => {
 						placeholder='Search...'
 						onChange={e => setFilter(e.target.value)}
 					/>
-					<button type='submit'>Search</button>
+					<button className='view--search-Btn' type='button'>
+						Search
+					</button>
 				</form>
-				<button onClick={openModal}>
+				<button className='view--add-new' onClick={openModal}>
 					<i className='fa-solid fa-square-plus fa-xl'></i>
 				</button>
 			</div>
